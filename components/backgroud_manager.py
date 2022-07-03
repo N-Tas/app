@@ -1,7 +1,7 @@
 import asyncio
 import threading
 import queue
-from .polynomial_components import Bindigns, CubicEQN, Pair
+from .polynomial_components import Bindigns, DummyBindings, CubicEQN, Pair
 from database import db_crud
 
         
@@ -15,7 +15,7 @@ class BGManager:
 # -------------------------------------------------------------------  
     def __init__(self, session):
         self.calc_queue = queue.Queue()
-        self.bindings = Bindigns("lib_heavy_calc.so", "C_Lib")
+        self.bindings = DummyBindings()
         self.first_call = True 
         self.session_local = session
         self.DECIMAL_POINT = 4

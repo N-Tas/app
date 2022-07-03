@@ -1,6 +1,7 @@
 import ctypes
 import pathlib
 import random
+from time import sleep
 from pydantic import BaseModel
 
 # -------------------------------------------------------------------
@@ -65,3 +66,14 @@ class Bindigns():
                             ctypes.c_float(float(model_ce.polynomial[3])),
                             abs(compute_time))
         return result,compute_time
+    
+class DummyBindings():
+    def __init__(self):
+        self.SLEEP_TIME_MIN = 5
+        self.SLEEP_TIME_MAX = 25
+        
+    def polynomial_calc(self, model_ce : CubicEQN):
+        compute_time = random.randint(self.SLEEP_TIME_MIN, self.SLEEP_TIME_MAX)
+        result = model_ce.polynomial[0] + (model_ce.polynomial[1]*model_ce.x) + (model_ce.polynomial[2]*pow(model_ce.x,2)) + (model_ce.polynomial[3]*pow(model_ce.x,3))
+        sleep(compute_time)
+        return result, compute_time

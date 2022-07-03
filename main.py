@@ -12,7 +12,7 @@ from database import db_models
 tags_metadata = [
     {
         "name": "post",
-        "description": "Set the polynomial values for for calculation.",
+        "description": "Set the polynomial values for calculation.",
     },
     {
         "name": "get_all",
